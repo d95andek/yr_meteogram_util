@@ -5,3 +5,6 @@ __pycache__/
 # Test files
 .pytest_cache/
 *.svg
+
+# Distribution
+/dist

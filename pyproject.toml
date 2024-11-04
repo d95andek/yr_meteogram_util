@@ -1,21 +1,22 @@
 [build-system]
-requires = ["hatchling","aiohttp"]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
 name = "yr_meteogram_util"
-version = "0.0.1"
+version = "0.1.0"
 authors = [
   { name="Andreas Gunnerås", email="andreas@gunneras.se" },
 ]
 description = "A package for downloading and maniuplating meteograms from YR"
 readme = "README.md"
-requires-python = ">=3.0"
+requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dependencies = ["aiohttp>=3.10"]
 
 [project.urls]
 Homepage = "https://github.com/d95andek/yr_meteogram_util"
