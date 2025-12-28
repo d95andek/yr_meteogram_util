@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "yr_meteogram_util"
-version = "0.2.3"
+version = "0.2.4"
 authors = [
   { name="Andreas Gunnerås", email="andreas@gunneras.se" },
 ]
@@ -16,7 +16,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-license = { file = "LICENSE.txt" }
+license = { text = "MIT" }
 dependencies = ["aiohttp>=3.10"]
 
 [project.urls]
