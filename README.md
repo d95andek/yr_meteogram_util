@@ -6,11 +6,14 @@ The meteograms are returned as svg in a string for you to use.
 
 ## Installing
 
-TODO
+To install the package, run:
+
+```pip install yr_meteogram_util```
 
 ### To upgrade
 
-TODO
+To upgrade to the latest version, run:
+```pip install --upgrade yr_meteogram_util```
 
 ## Features
 
@@ -73,29 +76,29 @@ To find the location id to be able to use this package:
 ```python
 # Import libraries for fetching meteograms from YR
 import asyncio # if using the async version
-from yr_meteogram_util import fetch, extract_info
+import yr_meteogram_util
 
 # The location to fetch, see "Notes about location"
 LOCATION_ID = '2-5847504'
 
 # Fetch the standard (bright) meteogram for LOCATION_ID
-standard_meteogram = fetch.fetch_svg(LOCATION_ID)
+standard_meteogram = yr_meteogram_util.fetch_svg(LOCATION_ID)
 
 # Fetch the dark meteogram for LOCATION_ID
-dark_meteogram = fetch.fetch_svg(LOCATION_ID, dark = True)
+dark_meteogram = yr_meteogram_util.fetch_svg(LOCATION_ID, dark = True)
 
 # Fetch the dark meteogram for LOCATION_ID and crop it
-dark_cropped_meteogram = fetch.fetch_svg(LOCATION_ID, dark = True, crop = True)
+dark_cropped_meteogram = yr_meteogram_util.fetch_svg(LOCATION_ID, dark = True, crop = True)
 
 # Fetch the dark meteogram for LOCATION_ID, crop it and make it transparent
-dark_cropped_transparent_meteogram = fetch.fetch_svg(LOCATION_ID, dark = True, crop = True, make_transparent = True)
+dark_cropped_transparent_meteogram = yr_meteogram_util.fetch_svg(LOCATION_ID, dark = True, crop = True, make_transparent = True)
 
 # Fetch the dark meteogram for LOCATION_ID, crop it and make it transparent and unhide dark details
-dark_cropped_transparent_meteogram = fetch.fetch_svg(LOCATION_ID, dark = True, crop = True, make_transparent = True, unhide_dark_objects = True)
+dark_cropped_transparent_meteogram = yr_meteogram_util.fetch_svg(LOCATION_ID, dark = True, crop = True, make_transparent = True, unhide_dark_objects = True)
 
 # There is also an async version available
-meteogram_async = asyncio.run(fetch.fetch_svg_async(LOCATION_ID))
+meteogram_async = asyncio.run(yr_meteogram_util.fetch_svg_async(LOCATION_ID))
 
 # It is possible to get the Location name from a meteogram
-location_name = extract_info.get_location_name(standard_meteogram)
+location_name = yr_meteogram_util.get_location_name(standard_meteogram)
 ```
