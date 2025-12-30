@@ -82,12 +82,13 @@ def crop_meteogram(svg_root: ET.Element) -> None:
 
     base_y = 363.0
 
-    # 2. Move "Served by" group
-    # Find the group with the specific transform
-    for g in svg_root.findall('.//svg:g', NAMESPACES):
-        if g.attrib.get('transform') == 'translate(612, 22.25)':
-            g.attrib['transform'] = f'translate(612, {base_y})'
-            
+    # 2. Remove "Served by" group
+    # Find the group with the specific transform and remove it
+    for parent in svg_root.iter():
+        for child in list(parent):
+            if child.tag == '{http://www.w3.org/2000/svg}g' and child.attrib.get('transform') == 'translate(612, 22.25)':
+                parent.remove(child)
+
     # 3. Move logos
     # The original code replaced y="24.28" and y="20" globally.
     # These attributes belong to the logo <svg> elements which are siblings to the group above.
@@ -98,6 +99,9 @@ def crop_meteogram(svg_root: ET.Element) -> None:
             elem.attrib['y'] = str(base_y + 1.79)
         elif y_val == '20':
             elem.attrib['y'] = str(base_y - 2.5)
+        elif y_val == '16' and elem.attrib.get('x') == '16' and elem.attrib.get('width') == '30':
+            elem.attrib['y'] = '86'
+            elem.attrib['x'] = '751'
 
 async def fetch_svg_async(location_id: str, dark: bool = False, crop: bool = False,
                           make_transparent: bool = False, unhide_dark_objects: bool = False,
